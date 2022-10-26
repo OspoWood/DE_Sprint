@@ -1,0 +1,319 @@
+1. Написать программу, которая сравнивает два введённых с
+ клавиатуры числа. Программа должна указать, какое число больше или,
+ если числа равны, вывести соответствующее сообщение.
+
+#include <iostream>
+
+int main()
+{
+  int first;
+  int second;
+  std::cin>>first;
+  std::cin>>second;
+  if (first>second){
+    std::cout << first<< "\n";
+  }else if (first<second){
+    std::cout << second<< "\n";
+  }else{
+    std::cout << "Equals"<< "!\n";
+      }
+}
+
+2. Написать программу, которая проверяет является ли год високосным.
+
+#include <stdio.h>
+#include <stdio.h>
+int main(){
+
+    int god;
+    scanf("%d",&god);
+    if(god%4)
+        printf("nevesokosniy god\n");
+    else printf("vesokosniy\n");
+    return 0;
+}
+
+3. Написать программу решения квадратного уравнения.
+Программа должна проверять правильность исходных данных и в случае,
+ если коэффициент при второй степени неизвестного равен нулю, выводить соответствующее сообщение.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double a, b, c;
+
+    cin >> a >> b >> c;
+
+    double D = b * b - 4 * a * c;
+
+    if (D < 0)
+        cout << "D < 0. No decisions!" << endl;
+    else if (D == 0)
+         {
+             double x1 = -b / (2 * a);
+             cout << "x1 = " << x1 << endl;
+         }
+         else
+         {
+             double x1 = (-b + sqrt(D)) / (2 * a),
+                    x2 = (-b - sqrt(D)) / (2 * a);
+             cout << "x2 = " << x1 << endl
+                  << "x2 = " << x2 << endl;
+         }
+    return 0;
+}
+
+4. Проверить на чётность введённое с клавиатуры число
+
+#include<iostream>
+
+int main()
+{
+  int n = 0;
+  std::cout << "n = ";
+  std::cin >> n;
+  std::cout << (n % 2 == 0 ? "Even" : "Odd") << std::endl;
+  return 0;
+}
+
+5. Написать программу, которая выводит таблицу квадратов десяти первых положительных чисел.
+
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main()
+{
+       int x =11, y;
+        for(int i=1; i < x; i++)
+        {y = i*i;
+        cout << i << " " << y << endl;}
+
+system("pause");
+return 0;
+}
+
+6. Написать программу, которая определяет максимальное число из введённой с
+клавиатуры последовательности положительных чисел. (длина последовательности неограниченна)
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+int main()
+{
+    std::vector<int> Vec;
+    int i=0;
+    while(1)
+    do{
+     std::cout<<"Enter i. 0 for end\n";
+        std::cin>>i;
+        if(i==0)
+           break;
+        Vec.push_back(i);
+    }while(1);
+    std::vector<int>::iterator It=std::max_element(Vec.begin(), Vec.end());
+    if(It!=Vec.end())
+       std::cout<<"Max is: "<< *It <<'\n';
+    return 0;
+}
+
+7. Написать программу, которая выводит таблицу значений
+функции y=-2 * x^2 - 5 * x - 8 в диапазоне от –4 до +4, с шагом 0,5
+
+#include <iostream>
+using namespace std;
+double f(const double x)
+{
+   return -2*(x**2)-5*x-8;
+}
+int main(){
+for (i = -4; i <= 4; i+=0.5)
+    {
+        cout << i << "\t" << f(i) << endl;
+    }
+
+}
+
+8. Необходимо создать двумерный массив 5 х 5.
+Далее написать функцию, которая заполнит его случайными числами от 30 до 60.
+ Создать еще две функции, которые находят максимальный и минимальный
+ элементы этого двумерного массива.
+
+
+void init(int **a, int line, int column);
+
+void main()
+{
+setlocale(LC_ALL, "rus");
+
+int size_l = 5;
+int size_c = 5;
+do
+{
+//инициализация двумерного массива
+int **mas = new int*[size_l];
+for (int i = 0; i < size_l; i++)
+mas[i] = new int[size_c];
+
+init(mas, size_l, size_c);
+}
+
+void init(int **a, int line, int column)
+{
+for (int i = 0; i < line; i++)
+{
+for (int j = 0; j < column; j++)
+{
+a[i][j] = rand() % 30 + 30;
+}
+}
+}
+
+9. Создайте структуру с именем student,
+содержащую поля: фамилия и инициалы, номер группы, успеваемость
+ (массив из пяти элементов). Создать массив из десяти элементов такого типа,
+ упорядочить записи по возрастанию среднего балла. Добавить возможность вывода
+  фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
+
+#include <iostream>
+
+using namespace std;
+
+struct Student{
+
+    string name,firstName,lastName;
+    int numGroup;
+    float marks[5];
+
+
+    float overageMark(){
+        float mark = 0;
+        for(int cnt=0;cnt < 5;++cnt){
+           mark+= marks[cnt];
+
+        }
+        mark = mark/5;
+        return  mark;
+    }
+
+    void putMaks(){
+        for(int cnt=0;cnt < 5;++cnt){
+            cin >> marks[cnt];
+        }
+    }
+
+    void outMarks(){
+        for(auto m : marks)cout<<" " << m <<" ";
+    }
+
+    void outFIO(){
+        cout<<firstName<<" "<<name<<" "<<lastName ;
+    }
+
+
+};
+
+Student putStudent(Student s){
+    cout<<"\n Enter FIO - ";
+    cin>>s.firstName>>s.name>>s.lastName ;
+    cout<<"\n Enter numGroup - ";
+    cin>>s.numGroup;
+    cout<<"\n Enter marks (count=5) - ";s.putMaks();
+
+    return s;
+}
+
+void outStudent(Student s){
+    cout<<"\n ";
+    s.outFIO();
+    cout<<" [ "<<s.numGroup<<" ] = { "<<s.overageMark()<<"}";
+}
+
+void outStudentList(Student s[],int  size){
+    for(int i=0;i<size;i++){
+        outStudent(s[i]);
+    }
+}
+
+void swap(Student &x,Student &y)
+{
+    Student temp=x;
+    x=y;
+    y=temp;
+}
+
+void showInfoSort(Student s[],int  size){
+    cout<<"\n__________"<<"Full list Student"<<"__________";
+    for (int i=1;i<size;i++){
+        for (int j=0;j<size-1;j++){
+            if (s[i].overageMark() < s[j].overageMark()) swap(s[i],s[j]) ;
+        }
+    }
+    outStudentList(s,size);
+
+}
+
+int main ()
+{
+    const int size = 3;
+    Student StudentList[size];
+    for(int i=0;i<size;i++){
+        StudentList[i] = putStudent(StudentList[i]);
+    }
+
+    for(auto s : StudentList){
+          outStudent(s);
+    }
+
+    showInfoSort(StudentList,size);
+
+    return 0;
+}
+
+
+10. Создайте структуру с именем train,
+содержащую поля: название пункта назначения,
+номер поезда, время отправления.
+ Ввести данные в массив из пяти элементов типа train,
+  упорядочить элементы по номерам поездов. Добавить возможность вывода
+  информации о поезде, номер которого введен пользователем.
+  Добавить возможность сортировки массив по пункту назначения,
+  причем поезда с одинаковыми пунктами назначения должны быть упорядочены по времени отправления.
+
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#define N 5
+
+struct train {
+    int number;
+    string destination, time;
+};
+
+bool cmp (train a, train b) {
+    return a.number < b.number;
+}
+
+int main (void) {
+    train a[N];
+    for (int i = 0; i < N; ++i) {
+        cout << "Номер поезда: ";
+        cin >> a[i].number;
+        cout << "Пункт назначения: ";
+        cin >> a[i].destination;
+        cout << "Время отправления: ";
+        cin >> a[i].time;
+    }
+    cout << endl;
+
+    sort(a, a+N, cmp);
+
+    for (int i = 0; i < N; ++i)
+        cout << a[i].number << " " << a[i].destination
+            << " " << a[i].time << endl;
+    return 0;
+}
